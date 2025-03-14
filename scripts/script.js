@@ -7,6 +7,12 @@ function toggleMenu() {
     hamburger.classList.toggle("is-active");
     navLinks.classList.toggle("active");
     body.classList.toggle("no-scroll");
+    
+    // Ensure mobile social icons visibility when menu is active
+    const mobileIcons = navLinks.querySelector('.mobile-social-icons');
+    if (mobileIcons) {
+        mobileIcons.style.opacity = navLinks.classList.contains('active') ? '1' : '0';
+    }
 }
 
 // Add mobile social icons to nav-links when in mobile view
@@ -33,7 +39,6 @@ function setupMobileMenu() {
                     <a href="https://www.instagram.com/londonacademyofbhangra/"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.tiktok.com/@londonacademyofbhangra"><i class="fab fa-tiktok"></i></a>
                 </div>
-                <p>Created by the Goat</p>
             `;
             footer.appendChild(mobileFooterIcons);
         }
@@ -45,6 +50,7 @@ function initializeMobileMenu() {
     // Setup mobile menu immediately
     setupMobileMenu();
     
+    // Handle hamburger menu click
     hamburger.addEventListener("click", (e) => {
         e.stopPropagation();
         toggleMenu();
@@ -59,7 +65,7 @@ function initializeMobileMenu() {
         }
     });
 
-    // Close menu when clicking nav links
+    // Handle navigation links
     document.querySelectorAll(".nav-links a").forEach(link => {
         link.addEventListener("click", () => {
             if (navLinks.classList.contains("active")) {
@@ -67,6 +73,16 @@ function initializeMobileMenu() {
             }
         });
     });
+
+    // Handle logo click for home navigation
+    const logoLink = document.querySelector('.logo a');
+    if (logoLink) {
+        logoLink.addEventListener('click', (e) => {
+            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+                e.preventDefault(); // Prevent navigation if already on home page
+            }
+        });
+    }
 
     // Add timetable filter functionality if on timetable page
     if (document.querySelector('.timetable-filters')) {
