@@ -61,13 +61,21 @@ p {
     color: var(--gold);
 }
 
-/* Desktop Social Icons */
+/* Footer and Desktop Social Icons */
+footer {
+    padding: 2rem 0;
+    background-color: var(--white);
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
 .desktop-social-icons {
     display: flex;
     gap: 2rem;
-    padding-right: 0m;
     justify-content: center;
-    padding-right: 0; /* Remove existing right padding */
+    padding-right: 0;
     width: 100%;
 }
 
@@ -189,56 +197,127 @@ p {
 
 .text-container { padding: 1rem; }
 
+/* Mobile Social Icons - Hidden by default */
+.mobile-social-icons {
+    display: none;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 2rem;
+    }
 
+    /* Rotate hamburger menu 45 degrees in mobile mode */
     .hamburger { 
         display: block !important; 
         position: relative;
+        top: 0;
+        right: 1rem;
         z-index: 1001;
-        color: var(--navy);
+        transform: scale(2) rotate(45deg);
+    }
+
+    /* When active, transform the bars */
+    .hamburger.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(315deg);
+    }
+
+    .hamburger.is-active .bar:nth-child(2) { 
+        opacity: 0; 
+    }
+    
+    .hamburger.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%;
+        left: 0;
+        right: 0;
         height: 100vh;
-        width: 70%;
+        width: 100%;
         background: var(--white);
         flex-direction: column;
-        padding: 6rem 2rem 2rem;
-        transition: all 0.3s ease-in-out;
-        z-index: 999;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
     }
 
-    .nav-links.active { right: 0; }
-
-    .desktop-social-icons { display: none !important; }
-
-    .mobile-social-icons {
-        margin-top: auto;
-        display: flex !important;
-        gap: 1.5rem;
+    .nav-links.active { 
+        transform: translateX(0);
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        padding: 2rem 0;
+        align-items: center;
+        padding-top: 6rem;
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    /* Mobile footer styles */
+    footer {
+        padding: 1.5rem 0;
+        display: block;
+    }
+    
+    /* Hide desktop social icons in mobile */
+    .desktop-social-icons {
+        display: none;
+    }
+
+    /* Mobile footer social icons */
+    footer .mobile-footer-icons {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        width: 100%;
+    }
+
+    footer .mobile-footer-icons a {
+        font-size: 2rem;
+        color: var(--navy);
+    }
+
+    footer .mobile-footer-icons p {
+        margin-top: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Show mobile social icons in the hamburger menu */
+    .mobile-social-icons {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        position: absolute;
+        bottom: 3rem;
+        left: 0;
+        right: 0;
+        width: 100%;
     }
 
     .mobile-social-icons a {
-        font-size: 1.8rem !important;
-        color: var(--navy) !important;
+        font-size: 2rem;
+        color: var(--navy);
     }
 
-    .hamburger.is-active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+    .no-scroll { 
+        overflow: hidden; 
     }
 
-    .hamburger.is-active .bar:nth-child(2) { opacity: 0; }
-    .hamburger.is-active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+    /* Remove space between navbar and Our Story on index.html */
+    .our-story {
+        padding-top: 0;
+        margin-top: 0;
     }
-
-    .no-scroll { overflow: hidden; }
 
     /* Adjust other elements */
     h1 { font-size: 2.5rem !important; }
@@ -258,13 +337,18 @@ p {
     }
 
     .story-image {
-        min-height: 300px; /* Reduce mobile image height */
+        min-height: 300px;
         width: 100%;
-        margin-bottom:0 !important;
+        margin-bottom: 0 !important;
     }
     
     .story-content {
-        padding-right: 1rem 0 !important;
+        padding: 1rem 0 !important;
         margin: 0 !important;
+    }
+
+    .logo {
+        position: relative;
+        z-index: 1001;
     }
 }
