@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable - London Academy of Bhangra</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/lab-logo.png" alt="LAB Logo">
+        </div>
+
+        <button class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="pricing.html">PRICING</a></li>
+            <li><a href="timetable.html">TIMETABLE</a></li>
+            <li><a href="events.html">EVENTS</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+        </ul>
+    </nav>
+
+    <!-- TIMETABLE SECTION -->
+    <section class="timetable">
+        <div class="container">
+            <h2>Class Schedule</h2>
+            
+            <div class="timetable-filters">
+                <button class="filter-btn active" data-filter="all">All Classes</button>
+                <button class="filter-btn" data-filter="beginner">Beginner</button>
+                <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+                <button class="filter-btn" data-filter="advanced">Advanced</button>
+            </div>
+            
+            <div class="timetable-grid">
+                <div class="timetable-day">
+                    <h3>Monday</h3>
+                    <div class="class-item beginner">
+                        <span class="class-time">6:00 PM - 7:00 PM</span>
+                        <span class="class-name">Beginner Bhangra</span>
+                        <span class="class-instructor">Instructor: Ravi</span>
+                    </div>
+                    <div class="class-item intermediate">
+                        <span class="class-time">7:15 PM - 8:30 PM</span>
+                        <span class="class-name">Intermediate Bhangra</span>
+                        <span class="class-instructor">Instructor: Gurdeep</span>
+                    </div>
+                </div>
+                
+                <div class="timetable-day">
+                    <h3>Tuesday</h3>
+                    <div class="class-item advanced">
+                        <span class="class-time">7:00 PM - 8:30 PM</span>
+                        <span class="class-name">Advanced Choreography</span>
+                        <span class="class-instructor">Instructor: Gurdeep</span>
+                    </div>
+                </div>
+                
+                <div class="timetable-day">
+                    <h3>Wednesday</h3>
+                    <div class="class-item beginner">
+                        <span class="class-time">6:00 PM - 7:00 PM</span>
+                        <span class="class-name">Bhangra Basics</span>
+                        <span class="class-instructor">Instructor: Ravi</span>
+                    </div>
+                </div>
+                
+                <div class="timetable-day">
+                    <h3>Thursday</h3>
+                    <div class="class-item intermediate">
+                        <span class="class-time">6:30 PM - 7:45 PM</span>
+                        <span class="class-name">Intermediate Technique</span>
+                        <span class="class-instructor">Instructor: Gurdeep</span>
+                    </div>
+                </div>
+                
+                <div class="timetable-day">
+                    <h3>Friday</h3>
+                    <div class="class-item beginner">
+                        <span class="class-time">5:30 PM - 6:30 PM</span>
+                        <span class="class-name">Beginner Bhangra</span>
+                        <span class="class-instructor">Instructor: Ravi</span>
+                    </div>
+                    <div class="class-item advanced">
+                        <span class="class-time">7:00 PM - 8:30 PM</span>
+                        <span class="class-name">Performance Team Practice</span>
+                        <span class="class-instructor">Instructors: Ravi & Gurdeep</span>
+                    </div>
+                </div>
+                
+                <div class="timetable-day">
+                    <h3>Saturday</h3>
+                    <div class="class-item beginner">
+                        <span class="class-time">10:00 AM - 11:00 AM</span>
+                        <span class="class-name">Family Bhangra (All Ages)</span>
+                        <span class="class-instructor">Instructor: Ravi</span>
+                    </div>
+                    <div class="class-item intermediate">
+                        <span class="class-time">11:30 AM - 1:00 PM</span>
+                        <span class="class-name">Intermediate Workshop</span>
+                        <span class="class-instructor">Instructor: Gurdeep</span>
+                    </div>
+                </div>
+                
+                <div class="timetable-day">
+                    <h3>Sunday</h3>
+                    <p class="no-classes">No regular classes - Available for private bookings</p>
+                </div>
+            </div>
+            
+            <div class="timetable-notes">
+                <h3>Important Notes</h3>
+                <ul>
+                    <li>Please arrive 10-15 minutes before class starts</li>
+                    <li>Wear comfortable clothing and bring water</li>
+                    <li>Booking in advance is recommended for all classes</li>
+                    <li>Schedule subject to change during holidays - check our social media for updates</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="desktop-social-icons">
+            <a href="https://instagram.com/lab_bhangra"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@lab_bhangra"><i class="fab fa-tiktok"></i></a>
+            <p>Created by the Goat</p>
+        </div>
+    </footer>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
