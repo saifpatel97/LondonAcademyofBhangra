@@ -256,3 +256,95 @@ document.addEventListener('DOMContentLoaded', function() {
     trackOutboundLinks();
     addLazyLoadingToImages();
 });
+
+// Booking Form Functionality
+function setupBookingForm() {
+    console.log("Setting up booking form");
+    
+    // Get all booking buttons
+    const bookButtons = document.querySelectorAll('.schedule-button, .price-button');
+    const modal = document.getElementById('bookingModal');
+    const closeBtn = document.querySelector('.close-modal');
+    const form = document.getElementById('bookingForm');
+    
+    if (!modal || !form) {
+        console.error("Booking modal or form not found");
+        return;
+    }
+    
+    // Open modal when booking buttons are clicked
+    bookButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("Book button clicked");
+            
+            // Pre-fill class type if available from the button context
+            const classItem = button.closest('.class-item');
+            if (classItem) {
+                const className = classItem.querySelector('.class-name').textContent;
+                const classTypeSelect = document.getElementById('classType');
+                
+                // Find the closest option match
+                for (let i = 0; i < classTypeSelect.options.length; i++) {
+                    if (className.includes(classTypeSelect.options[i].value)) {
+                        classTypeSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+                
+                // Pre-fill date if available
+                const classTime = classItem.querySelector('.class-time').textContent;
+                if (classTime.includes("Thursday")) {
+                    // Set to next Thursday
+                    const today = new Date();
+                    const nextThursday = new Date();
+                    nextThursday.setDate(today.getDate() + ((4 + 7 - today.getDay()) % 7));
+                    
+                    const dateInput = document.getElementById('classDate');
+                    dateInput.valueAsDate = nextThursday;
+                }
+            }
+            
+            // Show modal
+            modal.classList.add('show');
+            document.body.classList.add('no-scroll');
+        });
+    });
+    
+    // Close modal when X is clicked
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+            document.body.classList.remove('no-scroll');
+        });
+    }
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('show');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+    
+    // Form submission handling
+    form.addEventListener('submit', (e) => {
+        // FormSubmit.co will handle the actual submission
+        console.log("Form submitted");
+    });
+}
+
+// Call the setup function when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Existing initialization
+    initializeMobileMenu();
+    
+    // Add SEO enhancements
+    addStructuredDataForPage();
+    trackOutboundLinks();
+    addLazyLoadingToImages();
+    
+    // Setup booking form
+    setupBookingForm();
+});
+
