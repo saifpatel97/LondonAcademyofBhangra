@@ -3,7 +3,14 @@ const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 const body = document.body;
 
+console.log("Script loaded"); // Debug log to confirm script is running
+
+// Check if elements exist
+console.log("Hamburger element:", hamburger);
+console.log("Nav links element:", navLinks);
+
 function toggleMenu() {
+    console.log("Toggle menu called"); // Debug log
     hamburger.classList.toggle("is-active");
     navLinks.classList.toggle("active");
     body.classList.toggle("no-scroll");
@@ -17,6 +24,8 @@ function toggleMenu() {
 
 // Add mobile social icons to nav-links when in mobile view
 function setupMobileMenu() {
+    console.log("Setting up mobile menu"); // Debug log
+    
     // Create mobile social icons if they don't exist
     if (!document.querySelector('.nav-links .mobile-social-icons')) {
         const mobileIcons = document.createElement('div');
@@ -48,18 +57,25 @@ function setupMobileMenu() {
 
 // Initialize mobile menu
 function initializeMobileMenu() {
+    console.log("Initializing mobile menu"); // Debug log
+    
     // Setup mobile menu immediately
     setupMobileMenu();
     
     // Handle hamburger menu click
-    hamburger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        toggleMenu();
-    });
+    if (hamburger) {
+        hamburger.addEventListener("click", (e) => {
+            console.log("Hamburger clicked"); // Debug log
+            e.stopPropagation();
+            toggleMenu();
+        });
+    } else {
+        console.error("Hamburger element not found");
+    }
 
     // Close menu when clicking outside
     document.addEventListener("click", (e) => {
-        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+        if (navLinks && hamburger && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
             if (navLinks.classList.contains("active")) {
                 toggleMenu();
             }
@@ -67,13 +83,15 @@ function initializeMobileMenu() {
     });
 
     // Handle navigation links
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        link.addEventListener("click", () => {
-            if (navLinks.classList.contains("active")) {
-                toggleMenu();
-            }
+    if (navLinks) {
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                if (navLinks.classList.contains("active")) {
+                    toggleMenu();
+                }
+            });
         });
-    });
+    }
 
     // Handle logo click for home navigation
     const logoLink = document.querySelector('.logo a');
@@ -121,6 +139,7 @@ function setupTimetableFilters() {
 
 // Call initialization when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded"); // Debug log
     initializeMobileMenu();
 });
 
@@ -130,7 +149,7 @@ window.addEventListener('resize', () => {
     
     if (window.innerWidth > 768) {
         // Reset mobile menu state when returning to desktop view
-        if (navLinks.classList.contains("active")) {
+        if (navLinks && navLinks.classList.contains("active")) {
             toggleMenu();
         }
     }
@@ -232,9 +251,6 @@ function addLazyLoadingToImages() {
 
 // Execute SEO enhancements when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Call existing initialization
-    initializeMobileMenu();
-    
     // Add SEO enhancements
     addStructuredDataForPage();
     trackOutboundLinks();
