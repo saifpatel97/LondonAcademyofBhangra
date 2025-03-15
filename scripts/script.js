@@ -38,6 +38,7 @@ function setupMobileMenu() {
                 <div class="social-links">
                     <a href="https://www.instagram.com/londonacademyofbhangra/"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.tiktok.com/@londonacademyofbhangra"><i class="fab fa-tiktok"></i></a>
+                    <p>London Academy of Bhangra | 2025</p>
                 </div>
             `;
             footer.appendChild(mobileFooterIcons);
@@ -133,4 +134,109 @@ window.addEventListener('resize', () => {
             toggleMenu();
         }
     }
+});
+
+// SEO Enhancements - Add at the end of your script.js file
+
+// Add structured data dynamically for better SEO
+function addStructuredDataForPage() {
+    // Only add if not already present
+    if (document.querySelector('script[type="application/ld+json"]')) return;
+    
+    // Determine current page
+    const currentPath = window.location.pathname;
+    
+    // Create structured data based on page
+    let structuredData = {};
+    
+    // Base organization data
+    const orgData = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "London Academy of Bhangra",
+        "url": "https://www.londonacademyofbhangra.com",
+        "logo": "https://www.londonacademyofbhangra.com/images/lab-logo.png",
+        "sameAs": [
+            "https://www.instagram.com/londonacademyofbhangra/",
+            "https://www.tiktok.com/@londonacademyofbhangra"
+        ]
+    };
+    
+    // Add page-specific structured data
+    if (currentPath.includes('timetable')) {
+        structuredData = {
+            "@context": "https://schema.org",
+            "@type": "DanceSchool",
+            ...orgData,
+            "description": "London's premier Bhangra dance academy offering classes for all levels",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Gidea Park",
+                "postalCode": "RM2 6HJ",
+                "addressRegion": "London",
+                "addressCountry": "UK"
+            }
+        };
+    } else if (currentPath.includes('events')) {
+        structuredData = {
+            "@context": "https://schema.org",
+            "@type": "EventSeries",
+            ...orgData,
+            "description": "Bhangra dance events and workshops in London",
+            "location": {
+                "@type": "Place",
+                "name": "The Royal Liberty School",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Gidea Park",
+                    "postalCode": "RM2 6HJ",
+                    "addressRegion": "London",
+                    "addressCountry": "UK"
+                }
+            }
+        };
+    } else {
+        // Default to organization data for other pages
+        structuredData = orgData;
+    }
+    
+    // Create and append the script element
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.body.appendChild(script);
+}
+
+// Track outbound links for analytics
+function trackOutboundLinks() {
+    const links = document.querySelectorAll('a[href^="http"]');
+    links.forEach(link => {
+        if (!link.hostname.includes(window.location.hostname)) {
+            link.addEventListener('click', function() {
+                // If you have Google Analytics, you can track outbound links
+                if (typeof ga === 'function') {
+                    ga('send', 'event', 'outbound', 'click', link.href);
+                }
+            });
+        }
+    });
+}
+
+// Add lazy loading to images for better performance
+function addLazyLoadingToImages() {
+    const images = document.querySelectorAll('img:not([loading])');
+    images.forEach(img => {
+        img.setAttribute('loading', 'lazy');
+    });
+}
+
+// Execute SEO enhancements when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Call existing initialization
+    initializeMobileMenu();
+    
+    // Add SEO enhancements
+    addStructuredDataForPage();
+    trackOutboundLinks();
+    addLazyLoadingToImages();
 });

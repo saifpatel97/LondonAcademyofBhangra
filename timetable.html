@@ -3,7 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LAB | Timetable</title>
+    
+    <!-- SEO META TAGS - CUSTOMIZE THESE WITH YOUR INFORMATION -->
+    <title>Bhangra Dance Classes Timetable | London Academy of Bhangra</title>
+    <meta name="description" content="View London Academy of Bhangra's weekly class schedule. Register for beginner, intermediate and advanced Bhangra dance classes in East London.">
+    <meta name="keywords" content="bhangra classes london, bhangra dance timetable, punjabi dance classes, indian dance london, bhangra lessons">
+    
+    <!-- CANONICAL URL - REPLACE WITH YOUR ACTUAL DOMAIN -->
+    <link rel="canonical" href="https://londonacademyofbhangra.org/timetable.html">
+    
+    <!-- OPEN GRAPH TAGS FOR SOCIAL SHARING -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://londonacademyofbhangra.org/timetable.html">
+    <meta property="og:title" content="Bhangra Dance Classes Timetable | London Academy of Bhangra">
+    <meta property="og:description" content="View our weekly schedule of Bhangra dance classes in London for all skill levels. Register for beginner, intermediate, and advanced Bhangra lessons.">
+    <meta property="og:image" content="https://londonacademyofbhangra.org/images/lab-logo.png">
+    
+    <!-- TWITTER CARD TAGS -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bhangra Dance Classes Timetable | London Academy of Bhangra">
+    <meta name="twitter:description" content="View our weekly schedule of Bhangra dance classes in London for all skill levels.">
+    <meta name="twitter:image" content="https://londonacademyofbhangra.org/images/lab-logo.png">
+    
+    <!-- PRELOAD CRITICAL RESOURCES -->
+    <link rel="preload" href="styles/style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" as="font" crossorigin>
+    
+    <!-- EXISTING CSS LINKS -->
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
@@ -15,11 +41,11 @@
     <nav class="navbar">
         <div class="logo">
             <a href="/">
-                <img src="images/lab-logo.png" alt="LAB Logo">
+                <img src="images/lab-logo.png" alt="London Academy of Bhangra Logo - Bhangra Dance School in London">
             </a>
         </div>
 
-        <button class="hamburger">
+        <button class="hamburger" aria-label="Toggle navigation menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
@@ -30,14 +56,34 @@
             <li><a href="pricing.html">PRICING</a></li>
             <li><a href="timetable.html">TIMETABLE</a></li>
             <li><a href="events.html">EVENTS</a></li>
+            <li><a href="shop.html">SHOP</a></li>
             <li><a href="about.html">ABOUT</a></li>
         </ul>
+    </nav>
+
+    <!-- BREADCRUMBS FOR SEO -->
+    <nav aria-label="breadcrumb" class="breadcrumbs">
+        <div class="container">
+            <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">Timetable</span>
+                    <meta itemprop="position" content="2" />
+                </li>
+            </ol>
+        </div>
     </nav>
 
     <!-- TIMETABLE SECTION -->
     <section class="timetable">
         <div class="container">
-            <h2>Class Schedule</h2>
+            <h1>Bhangra Dance Classes Timetable</h1>
+            
+            <!-- SEO-FRIENDLY INTRO PARAGRAPH -->
+            <p class="intro-text">Join London's premier Bhangra dance academy for energetic, authentic Punjabi dance classes. Our timetable offers flexible options for all skill levels from complete beginners to advanced dancers. Classes are led by experienced instructors in East London. Register your interest for upcoming classes or book your spot today!</p>
             
             <div class="timetable-filters">
                 <button class="filter-btn active" data-filter="all">All Classes</button>
@@ -50,11 +96,13 @@
                 <div class="timetable-day">
                     <h3>Monday</h3>
                     <div class="class-item beginner">
-                        <span class="class-time">TBC</span>
+                        <a href="#" class="schedule-button"><i class="fas fa-bell"></i> Register Interest</a>
+                        <span class="class-time">TBC </span>
                         <span class="class-name">Beginner Bhangra</span>
                         <span class="class-instructor">Instructor: TBC</span>
                     </div>
                     <div class="class-item intermediate">
+                        <a href="#" class="schedule-button"><i class="fas fa-bell"></i> Register Interest</a>
                         <span class="class-time">TBC</span>
                         <span class="class-name">Intermediate Bhangra</span>
                         <span class="class-instructor">Instructor: TBC</span>
@@ -64,6 +112,7 @@
                 <div class="timetable-day">
                     <h3>Tuesday</h3>
                     <div class="class-item advanced">
+                        <a href="#" class="schedule-button"><i class="fas fa-bell"></i> Register Interest</a>
                         <span class="class-time">TBC</span>
                         <span class="class-name">Advanced Choreography</span>
                         <span class="class-instructor">Instructor: TBC</span>
@@ -73,6 +122,7 @@
                 <div class="timetable-day">
                     <h3>Wednesday</h3>
                     <div class="class-item beginner">
+                        <a href="#" class="schedule-button"><i class="fas fa-bell"></i> Register Interest</a>
                         <span class="class-time">TBC</span>
                         <span class="class-name">Bhangra Basics</span>
                         <span class="class-instructor">Instructor: TBC</span>
@@ -82,6 +132,7 @@
                 <div class="timetable-day">
                     <h3>Thursday</h3>
                     <div class="class-item beginner">
+                        <a href="#" class="schedule-button"> Book Now</a>
                         <span class="class-time">7:00 PM - 8:00 PM</span>
                         <span class="class-name">All Abilities</span>
                         <span class="class-instructor">Instructors: Ravi & Gurdeep</span>
@@ -91,11 +142,13 @@
                 <div class="timetable-day">
                     <h3>Friday</h3>
                     <div class="class-item beginner">
+                        <a href="#" class="schedule-button"><i class="fas fa-bell"></i> Register Interest</a>
                         <span class="class-time">TBC</span>
                         <span class="class-name">Beginner Bhangra</span>
                         <span class="class-instructor">Instructor: TBC</span>
                     </div>
                     <div class="class-item advanced">
+                        <a href="#" class="schedule-button"><i class="fas fa-bell"></i> Register Interest</a>
                         <span class="class-time">TBC</span>
                         <span class="class-name">Performance Team Practice</span>
                         <span class="class-instructor">Instructor: TBC</span>
@@ -105,11 +158,13 @@
                 <div class="timetable-day">
                     <h3>Saturday</h3>
                     <div class="class-item beginner">
+                        <a href="#" class="schedule-button"><i class="fas fa-bell"></i> Register Interest</a>
                         <span class="class-time">TBC</span>
                         <span class="class-name">Family Bhangra (All Ages)</span>
                         <span class="class-instructor">Instructor: TBC</span>
                     </div>
                     <div class="class-item intermediate">
+                        <a href="#" class="schedule-button"><i class="fas fa-bell"></i> Register Interest</a>
                         <span class="class-time">TBC</span>
                         <span class="class-name">Intermediate Workshop</span>
                         <span class="class-instructor">Instructor: TBC</span>
@@ -131,15 +186,51 @@
                     <li>Schedule subject to change during holidays - check our social media for updates</li>
                 </ul>
             </div>
+            
+            <!-- LOCATION INFO FOR LOCAL SEO -->
+            <div class="location-info">
+                <h3>Our Class Location</h3>
+                <p>London Academy of Bhangra classes are held at:</p>
+                <p><strong>The Royal Liberty School</strong>, Gidea Park, RM2 6HJ</p>
+                <p>Just a 9-minute walk from Gidea Park Station in East London</p>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="desktop-social-icons">
-            <a href="https://www.instagram.com/londonacademyofbhangra/"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@londonacademyofbhangra"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/londonacademyofbhangra/" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@londonacademyofbhangra" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
+            <p>London Academy of Bhangra | 2025 | <a href="/privacy-policy.html">Privacy Policy</a></p>
         </div>
     </footer>
+    
+    <!-- STRUCTURED DATA FOR DANCE SCHOOL -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DanceSchool",
+      "name": "London Academy of Bhangra",
+      "url": "https://londonacademyofbhangra.org",
+      "logo": "https://londonacademyofbhangra.org/images/lab-logo.png",
+      "description": "London's premier Bhangra dance academy offering classes for all levels",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Gidea Park",
+        "postalCode": "RM2 6HJ",
+        "addressRegion": "London",
+        "addressCountry": "UK"
+      },
+      "telephone": "+447851564285",
+      "email": "x",
+      "openingHours": "Thursday 7:00-8:00",
+      "sameAs": [
+        "https://www.instagram.com/londonacademyofbhangra/",
+        "https://www.tiktok.com/@londonacademyofbhangra"
+      ]
+    }
+    </script>
+    
     <script src="scripts/script.js"></script>
 </body>
 </html>
