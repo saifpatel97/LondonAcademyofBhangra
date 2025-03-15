@@ -64,23 +64,16 @@ function initializeMobileMenu() {
     
     // Handle hamburger menu click
     if (hamburger) {
-        hamburger.addEventListener("click", (e) => {
-            console.log("Hamburger clicked"); // Debug log
-            e.stopPropagation();
-            toggleMenu();
-        });
+        // Remove any existing event listeners first
+        hamburger.removeEventListener("click", hamburgerClickHandler);
+        // Add the event listener
+        hamburger.addEventListener("click", hamburgerClickHandler);
     } else {
         console.error("Hamburger element not found");
     }
 
     // Close menu when clicking outside
-    document.addEventListener("click", (e) => {
-        if (navLinks && hamburger && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-            if (navLinks.classList.contains("active")) {
-                toggleMenu();
-            }
-        }
-    });
+    document.addEventListener("click", documentClickHandler);
 
     // Handle navigation links
     if (navLinks) {
@@ -106,6 +99,22 @@ function initializeMobileMenu() {
     // Add timetable filter functionality if on timetable page
     if (document.querySelector('.timetable-filters')) {
         setupTimetableFilters();
+    }
+}
+
+// Hamburger click handler function
+function hamburgerClickHandler(e) {
+    console.log("Hamburger clicked"); // Debug log
+    e.stopPropagation();
+    toggleMenu();
+}
+
+// Document click handler function
+function documentClickHandler(e) {
+    if (navLinks && hamburger && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+        if (navLinks.classList.contains("active")) {
+            toggleMenu();
+        }
     }
 }
 
@@ -136,26 +145,6 @@ function setupTimetableFilters() {
         });
     });
 }
-
-// Call initialization when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded"); // Debug log
-    initializeMobileMenu();
-});
-
-// Handle window resize
-window.addEventListener('resize', () => {
-    setupMobileMenu();
-    
-    if (window.innerWidth > 768) {
-        // Reset mobile menu state when returning to desktop view
-        if (navLinks && navLinks.classList.contains("active")) {
-            toggleMenu();
-        }
-    }
-});
-
-// SEO Enhancements - Add at the end of your script.js file
 
 // Add structured data dynamically for better SEO
 function addStructuredDataForPage() {
@@ -249,14 +238,6 @@ function addLazyLoadingToImages() {
     });
 }
 
-// Execute SEO enhancements when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Add SEO enhancements
-    addStructuredDataForPage();
-    trackOutboundLinks();
-    addLazyLoadingToImages();
-});
-
 // Booking Form Functionality
 function setupBookingForm() {
     console.log("Setting up booking form");
@@ -334,9 +315,12 @@ function setupBookingForm() {
     });
 }
 
-// Call the setup function when DOM is loaded
+// SINGLE EVENT LISTENER FOR DOM CONTENT LOADED
+// This prevents duplicate initialization
 document.addEventListener('DOMContentLoaded', function() {
-    // Existing initialization
+    console.log("DOM fully loaded - Single initialization point"); // Debug log
+    
+    // Initialize mobile menu
     initializeMobileMenu();
     
     // Add SEO enhancements
@@ -346,5 +330,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup booking form
     setupBookingForm();
+    
+    // Add a simple test to verify the hamburger is clickable
+    if (hamburger) {
+        console.log("Adding test click handler");
+        hamburger.addEventListener('click', function() {
+            console.log("Test click handler fired");
+        });
+    }
 });
 
+// Handle window resize
+window.addEventListener('resize', () => {
+    setupMobileMenu();
+    
+    if (window.innerWidth > 768) {
+        // Reset mobile menu state when returning to desktop view
+        if (navLinks && navLinks.classList.contains("active")) {
+            toggleMenu();
+        }
+    }
+});
